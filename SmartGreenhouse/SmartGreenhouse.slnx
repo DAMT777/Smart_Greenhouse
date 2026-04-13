@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="SmartGreenhouse.Application/SmartGreenhouse.Application.csproj" />
+  <Project Path="SmartGreenhouse.Domain/SmartGreenhouse.Domain.csproj" />
+  <Project Path="SmartGreenhouse.Presentation/SmartGreenhouse.Presentation.csproj" />
+  <Project Path="SmartGreenhouse.Repository/SmartGreenhouse.Repository.csproj" />
+</Solution>

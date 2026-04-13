@@ -1,0 +1,16 @@
+C:\Users\diego\OneDrive\Documentos\SmartGreenhouse\SmartGreenhouse\SmartGreenhouse.Application\bin\Debug\net10.0\SmartGreenhouse.Application.deps.json
+C:\Users\diego\OneDrive\Documentos\SmartGreenhouse\SmartGreenhouse\SmartGreenhouse.Application\bin\Debug\net10.0\SmartGreenhouse.Application.dll
+C:\Users\diego\OneDrive\Documentos\SmartGreenhouse\SmartGreenhouse\SmartGreenhouse.Application\bin\Debug\net10.0\SmartGreenhouse.Application.pdb
+C:\Users\diego\OneDrive\Documentos\SmartGreenhouse\SmartGreenhouse\SmartGreenhouse.Application\bin\Debug\net10.0\SmartGreenhouse.Domain.dll
+C:\Users\diego\OneDrive\Documentos\SmartGreenhouse\SmartGreenhouse\SmartGreenhouse.Application\bin\Debug\net10.0\SmartGreenhouse.Domain.pdb
+C:\Users\diego\OneDrive\Documentos\SmartGreenhouse\SmartGreenhouse\SmartGreenhouse.Application\obj\Debug\net10.0\SmartGreenhouse.Application.csproj.AssemblyReference.cache
+C:\Users\diego\OneDrive\Documentos\SmartGreenhouse\SmartGreenhouse\SmartGreenhouse.Application\obj\Debug\net10.0\SmartGreenhouse.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\diego\OneDrive\Documentos\SmartGreenhouse\SmartGreenhouse\SmartGreenhouse.Application\obj\Debug\net10.0\SmartGreenhouse.Application.AssemblyInfoInputs.cache
+C:\Users\diego\OneDrive\Documentos\SmartGreenhouse\SmartGreenhouse\SmartGreenhouse.Application\obj\Debug\net10.0\SmartGreenhouse.Application.AssemblyInfo.cs
+C:\Users\diego\OneDrive\Documentos\SmartGreenhouse\SmartGreenhouse\SmartGreenhouse.Application\obj\Debug\net10.0\SmartGreenhouse.Application.csproj.CoreCompileInputs.cache
+C:\Users\diego\OneDrive\Documentos\SmartGreenhouse\SmartGreenhouse\SmartGreenhouse.Application\obj\Debug\net10.0\SmartGreenhouse.Application.sourcelink.json
+C:\Users\diego\OneDrive\Documentos\SmartGreenhouse\SmartGreenhouse\SmartGreenhouse.Application\obj\Debug\net10.0\SmartGre.E5CA5D93.Up2Date
+C:\Users\diego\OneDrive\Documentos\SmartGreenhouse\SmartGreenhouse\SmartGreenhouse.Application\obj\Debug\net10.0\SmartGreenhouse.Application.dll
+C:\Users\diego\OneDrive\Documentos\SmartGreenhouse\SmartGreenhouse\SmartGreenhouse.Application\obj\Debug\net10.0\refint\SmartGreenhouse.Application.dll
+C:\Users\diego\OneDrive\Documentos\SmartGreenhouse\SmartGreenhouse\SmartGreenhouse.Application\obj\Debug\net10.0\SmartGreenhouse.Application.pdb
+C:\Users\diego\OneDrive\Documentos\SmartGreenhouse\SmartGreenhouse\SmartGreenhouse.Application\obj\Debug\net10.0\ref\SmartGreenhouse.Application.dll

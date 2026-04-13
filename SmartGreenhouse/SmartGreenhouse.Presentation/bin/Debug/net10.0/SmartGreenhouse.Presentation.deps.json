@@ -1,0 +1,72 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "SmartGreenhouse.Presentation/1.0.0": {
+        "dependencies": {
+          "SmartGreenhouse.Application": "1.0.0",
+          "SmartGreenhouse.Repository": "1.0.0"
+        },
+        "runtime": {
+          "SmartGreenhouse.Presentation.dll": {}
+        }
+      },
+      "SmartGreenhouse.Application/1.0.0": {
+        "dependencies": {
+          "SmartGreenhouse.Domain": "1.0.0"
+        },
+        "runtime": {
+          "SmartGreenhouse.Application.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "SmartGreenhouse.Domain/1.0.0": {
+        "runtime": {
+          "SmartGreenhouse.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "SmartGreenhouse.Repository/1.0.0": {
+        "dependencies": {
+          "SmartGreenhouse.Domain": "1.0.0"
+        },
+        "runtime": {
+          "SmartGreenhouse.Repository.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SmartGreenhouse.Presentation/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SmartGreenhouse.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SmartGreenhouse.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SmartGreenhouse.Repository/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
