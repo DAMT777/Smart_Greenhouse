@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\SmartGreenhouse.Application\\Services",
+    "\\SmartGreenhouse.Domain\\bin",
+    "\\SmartGreenhouse.Domain\\Entities",
+    "\\SmartGreenhouse.Domain\\Interfaces"
+  ],
+  "SelectedNode": "\\SmartGreenhouse.Presentation",
+  "PreviewInSolutionExplorer": false
+}

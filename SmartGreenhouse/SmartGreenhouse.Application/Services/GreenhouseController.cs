@@ -1,4 +1,5 @@
 using System;
+using SmartGreenhouse.Domain.Rules;
 
 namespace SmartGreenhouse.Application.Services
 {
@@ -7,15 +8,18 @@ namespace SmartGreenhouse.Application.Services
         private SensorMonitoringService monitoreaSensores;
         private IrrigationService servicioRiego;
         private VentilationService ventilacionSvc;
+        private ReglaRiego regla;
 
         public GreenhouseController(
             SensorMonitoringService monitoreaSensores,
             IrrigationService servicioRiego,
-            VentilationService ventilacionSvc)
+            VentilationService ventilacionSvc,
+            ReglaRiego regla)
         {
             this.monitoreaSensores = monitoreaSensores;
             this.servicioRiego = servicioRiego;
             this.ventilacionSvc = ventilacionSvc;
+            this.regla = regla;
         }
 
         public void ejecutarCicloMonitoreo()
@@ -49,7 +53,7 @@ namespace SmartGreenhouse.Application.Services
             {
                 case "READ":
                     var state = monitoreaSensores.obtenerEstadoActual();
-                    Console.WriteLine($"Humedad: {state._humedad}% | Temperatura: {state._temperatura}° | Modo: {state._modoActual}");
+                    Console.WriteLine($"Humedad: {state.Humedad}% | Temperatura: {state.Temperatura}° | Modo: {state.ModoActual}");
                     break;
 
                 case "IRRIGATE":
@@ -72,9 +76,15 @@ namespace SmartGreenhouse.Application.Services
                         if (float.TryParse(parts[2], out float value))
                         {
                             if (target == "MOISTURE_THRESHOLD")
+                            {
+                                regla.actualizarUmbral(value);
                                 Console.WriteLine($"Umbral de humedad actualizado a {value}%");
+                            }
                             else if (target == "TEMP_THRESHOLD")
+                            {
+                                ventilacionSvc.actualizarUmbralTemp(value);
                                 Console.WriteLine($"Umbral de temperatura actualizado a {value}°");
+                            }
                         }
                     }
                     break;

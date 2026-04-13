@@ -15,7 +15,7 @@ var regla = new ReglaRiego(umbralHumedadMinima: 50f, duracionRiegoRecomendada: 3
 var monitoreo = new SensorMonitoringService(simulador, sensorTemp);
 var riego = new IrrigationService(repo, bomba, regla);
 var ventilacion = new VentilationService(ventilador, umbralTemp: 30f);
-var controller = new GreenhouseController(monitoreo, riego, ventilacion);
+var controller = new GreenhouseController(monitoreo, riego, ventilacion, regla);
 
 controller.iniciarSistema();
 

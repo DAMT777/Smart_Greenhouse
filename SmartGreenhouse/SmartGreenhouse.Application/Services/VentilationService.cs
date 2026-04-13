@@ -13,9 +13,14 @@ namespace SmartGreenhouse.Application.Services
             this.umbralTemp = umbralTemp;
         }
 
+        public void actualizarUmbralTemp(float valor)
+        {
+            umbralTemp = valor;
+        }
+
         public void evaluarTemperatura(ClimateState state)
         {
-            if (state._temperatura > umbralTemp)
+            if (state.Temperatura > umbralTemp)
             {
                 ventilador.encender();
                 ventilador.setVelocidad(100);

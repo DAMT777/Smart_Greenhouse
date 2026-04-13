@@ -20,9 +20,9 @@ namespace SmartGreenhouse.Application.Services
 
         public void evaluarYEjecutar(ClimateState state)
         {
-            repositorio.guardarLecturaHumedad(state._humedad);
+            repositorio.guardarLecturaHumedad(state.Humedad);
 
-            if (regla.requiereRiego(state._humedad))
+            if (regla.requiereRiego(state.Humedad))
             {
                 int duracion = regla.getDuracionRiego();
                 actuador.activarPor(duracion);
@@ -31,8 +31,8 @@ namespace SmartGreenhouse.Application.Services
                     duracion,
                     "automatico",
                     DateTime.Now,
-                    state._humedad,
-                    state._humedad
+                    state.Humedad,
+                    0f
                 );
                 repositorio.registrarEvento(evento);
             }
