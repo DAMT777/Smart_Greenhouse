@@ -7,13 +7,13 @@ namespace SmartGreenhouse.Repository
 {
     public class FileGreenhouseRepository : IGreenhouseRepository
     {
-        public string rutaArchivo { get; set; }
-        public string formato { get; set; }
+        public string RutaArchivo { get; set; }
+        public string Formato { get; set; }
 
         public FileGreenhouseRepository(string rutaArchivo, string formato)
         {
-            this.rutaArchivo = rutaArchivo;
-            this.formato = formato;
+            this.RutaArchivo = rutaArchivo;
+            this.Formato = formato;
         }
 
         public void guardarLecturaHumedad(float valor)

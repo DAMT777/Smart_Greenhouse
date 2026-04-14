@@ -4,13 +4,13 @@ namespace SmartGreenhouse.Domain.Entities
 {
     public class SensorHumedadSuelo : Sensor, ISensorHumedad
     {
-        public float calibracion { get; set; }
+        public float Calibracion { get; set; }
 
         public SensorHumedadSuelo(string id, float calibracion)
         {
-            this.id = id;
-            this.tipo = "HumedadSuelo";
-            this.calibracion = calibracion;
+            this.Id = id;
+            this.Tipo = "HumedadSuelo";
+            this.Calibracion = calibracion;
         }
 
         public override float leerValor()

@@ -6,19 +6,19 @@ namespace SmartGreenhouse.Application.Services
 {
     public class SensorMonitoringService
     {
-        private ISensorHumedad sensorSuelo;
-        private SensorTemperatura sensorTemp;
+        private ISensorHumedad _sensorSuelo;
+        private SensorTemperatura _sensorTemp;
 
         public SensorMonitoringService(ISensorHumedad sensorSuelo, SensorTemperatura sensorTemp)
         {
-            this.sensorSuelo = sensorSuelo;
-            this.sensorTemp = sensorTemp;
+            _sensorSuelo = sensorSuelo;
+            _sensorTemp = sensorTemp;
         }
 
         public ClimateState obtenerEstadoActual()
         {
-            float humedad = sensorSuelo.leerValor();
-            float temperatura = sensorTemp.leerValor();
+            float humedad = _sensorSuelo.leerValor();
+            float temperatura = _sensorTemp.leerValor();
             return new ClimateState(humedad, temperatura, DateTime.Now, "auto");
         }
 

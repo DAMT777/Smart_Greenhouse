@@ -2,13 +2,13 @@ namespace SmartGreenhouse.Domain.Entities
 {
     public class SensorTemperatura : Sensor
     {
-        public string unidad { get; set; }
+        public string Unidad { get; set; }
 
         public SensorTemperatura(string id, string unidad)
         {
-            this.id = id;
-            this.tipo = "Temperatura";
-            this.unidad = unidad;
+            this.Id = id;
+            this.Tipo = "Temperatura";
+            this.Unidad = unidad;
         }
 
         public override float leerValor()

@@ -5,10 +5,10 @@ namespace SmartGreenhouse.Application.Services
 {
     public class GreenhouseController
     {
-        private SensorMonitoringService monitoreaSensores;
-        private IrrigationService servicioRiego;
-        private VentilationService ventilacionSvc;
-        private ReglaRiego regla;
+        private SensorMonitoringService _monitoreaSensores;
+        private IrrigationService _servicioRiego;
+        private VentilationService _ventilacionSvc;
+        private ReglaRiego _regla;
 
         public GreenhouseController(
             SensorMonitoringService monitoreaSensores,
@@ -16,17 +16,17 @@ namespace SmartGreenhouse.Application.Services
             VentilationService ventilacionSvc,
             ReglaRiego regla)
         {
-            this.monitoreaSensores = monitoreaSensores;
-            this.servicioRiego = servicioRiego;
-            this.ventilacionSvc = ventilacionSvc;
-            this.regla = regla;
+            _monitoreaSensores = monitoreaSensores;
+            _servicioRiego = servicioRiego;
+            _ventilacionSvc = ventilacionSvc;
+            _regla = regla;
         }
 
         public void ejecutarCicloMonitoreo()
         {
-            var state = monitoreaSensores.obtenerEstadoActual();
-            servicioRiego.evaluarYEjecutar(state);
-            ventilacionSvc.evaluarTemperatura(state);
+            var state = _monitoreaSensores.obtenerEstadoActual();
+            _servicioRiego.evaluarYEjecutar(state);
+            _ventilacionSvc.evaluarTemperatura(state);
         }
 
         public void iniciarSistema()
@@ -36,8 +36,8 @@ namespace SmartGreenhouse.Application.Services
 
         public void detenerSistema()
         {
-            servicioRiego.detenerRiego();
-            ventilacionSvc.detenerVentilacion();
+            _servicioRiego.detenerRiego();
+            _ventilacionSvc.detenerVentilacion();
             Console.WriteLine("Sistema detenido.");
         }
 
@@ -52,7 +52,7 @@ namespace SmartGreenhouse.Application.Services
             switch (command)
             {
                 case "READ":
-                    var state = monitoreaSensores.obtenerEstadoActual();
+                    var state = _monitoreaSensores.obtenerEstadoActual();
                     Console.WriteLine($"Humedad: {state.Humedad}% | Temperatura: {state.Temperatura}° | Modo: {state.ModoActual}");
                     break;
 
@@ -61,9 +61,9 @@ namespace SmartGreenhouse.Application.Services
                     {
                         var sub = parts[1].ToUpperInvariant();
                         if (sub == "ON")
-                            servicioRiego.forzarRiegoManual(30);
+                            _servicioRiego.forzarRiegoManual(30);
                         else if (sub == "OFF")
-                            servicioRiego.detenerRiego();
+                            _servicioRiego.detenerRiego();
                         else if (sub == "AUTO")
                             ejecutarCicloMonitoreo();
                     }
@@ -77,12 +77,12 @@ namespace SmartGreenhouse.Application.Services
                         {
                             if (target == "MOISTURE_THRESHOLD")
                             {
-                                regla.actualizarUmbral(value);
+                                _regla.actualizarUmbral(value);
                                 Console.WriteLine($"Umbral de humedad actualizado a {value}%");
                             }
                             else if (target == "TEMP_THRESHOLD")
                             {
-                                ventilacionSvc.actualizarUmbralTemp(value);
+                                _ventilacionSvc.actualizarUmbralTemp(value);
                                 Console.WriteLine($"Umbral de temperatura actualizado a {value}°");
                             }
                         }

@@ -6,22 +6,22 @@ namespace SmartGreenhouse.Repository
 {
     public class InMemoryGreenhouseRepo : IGreenhouseRepository
     {
-        private List<float> historialLecturas = new List<float>();
-        private List<IrrigationEvent> historialEventos = new List<IrrigationEvent>();
+        private List<float> _historialLecturas = new List<float>();
+        private List<IrrigationEvent> _historialEventos = new List<IrrigationEvent>();
 
         public void guardarLecturaHumedad(float valor)
         {
-            historialLecturas.Add(valor);
+            _historialLecturas.Add(valor);
         }
 
         public void registrarEvento(IrrigationEvent evento)
         {
-            historialEventos.Add(evento);
+            _historialEventos.Add(evento);
         }
 
         public List<IrrigationEvent> obtenerHistorial()
         {
-            return historialEventos;
+            return _historialEventos;
         }
     }
 }

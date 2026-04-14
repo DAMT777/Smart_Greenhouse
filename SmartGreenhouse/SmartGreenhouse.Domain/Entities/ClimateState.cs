@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace SmartGreenhouse.Domain.Entities
 {
@@ -6,14 +6,14 @@ namespace SmartGreenhouse.Domain.Entities
     {
         public float Humedad { get; set; }
         public float Temperatura { get; set; }
-        public DateTime _timeStamp { get; set; }
+        public DateTime Timestamp { get; set; }
         public string ModoActual { get; set; }
 
         public ClimateState(float humedad, float temperatura, DateTime timestamp, string modoActual)
         {
             Humedad = humedad;
             Temperatura = temperatura;
-            _timeStamp = timestamp;
+            Timestamp = timestamp;
             ModoActual = modoActual;
         }
 

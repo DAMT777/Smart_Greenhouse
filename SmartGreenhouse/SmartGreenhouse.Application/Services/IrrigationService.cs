@@ -7,25 +7,25 @@ namespace SmartGreenhouse.Application.Services
 {
     public class IrrigationService
     {
-        private IGreenhouseRepository repositorio;
-        private IActuadorRiego actuador;
-        private ReglaRiego regla;
+        private IGreenhouseRepository _repositorio;
+        private IActuadorRiego _actuador;
+        private ReglaRiego _regla;
 
         public IrrigationService(IGreenhouseRepository repositorio, IActuadorRiego actuador, ReglaRiego regla)
         {
-            this.repositorio = repositorio;
-            this.actuador = actuador;
-            this.regla = regla;
+            _repositorio = repositorio;
+            _actuador = actuador;
+            _regla = regla;
         }
 
         public void evaluarYEjecutar(ClimateState state)
         {
-            repositorio.guardarLecturaHumedad(state.Humedad);
+            _repositorio.guardarLecturaHumedad(state.Humedad);
 
-            if (regla.requiereRiego(state.Humedad))
+            if (_regla.requiereRiego(state.Humedad))
             {
-                int duracion = regla.getDuracionRiego();
-                actuador.activarPor(duracion);
+                int duracion = _regla.getDuracionRiego();
+                _actuador.activarPor(duracion);
 
                 var evento = new IrrigationEvent(
                     duracion,
@@ -34,13 +34,13 @@ namespace SmartGreenhouse.Application.Services
                     state.Humedad,
                     0f
                 );
-                repositorio.registrarEvento(evento);
+                _repositorio.registrarEvento(evento);
             }
         }
 
         public void forzarRiegoManual(int segundos)
         {
-            actuador.activarPor(segundos);
+            _actuador.activarPor(segundos);
 
             var evento = new IrrigationEvent(
                 segundos,
@@ -49,12 +49,12 @@ namespace SmartGreenhouse.Application.Services
                 0f,
                 0f
             );
-            repositorio.registrarEvento(evento);
+            _repositorio.registrarEvento(evento);
         }
 
         public void detenerRiego()
         {
-            actuador.desactivar();
+            _actuador.desactivar();
         }
     }
 }

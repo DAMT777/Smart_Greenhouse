@@ -2,23 +2,23 @@ namespace SmartGreenhouse.Domain.Entities
 {
     public abstract class Actuador
     {
-        public string id { get; set; }
-        public bool encendido { get; protected set; }
-        public string modo { get; set; }
+        public string Id { get; set; }
+        public bool Encendido { get; protected set; }
+        public string Modo { get; set; }
 
         public virtual void encender()
         {
-            encendido = true;
+            Encendido = true;
         }
 
         public virtual void apagar()
         {
-            encendido = false;
+            Encendido = false;
         }
 
         public void setModo(string modo)
         {
-            this.modo = modo;
+            this.Modo = modo;
         }
     }
 }

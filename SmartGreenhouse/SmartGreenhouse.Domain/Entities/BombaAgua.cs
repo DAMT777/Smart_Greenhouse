@@ -4,29 +4,29 @@ namespace SmartGreenhouse.Domain.Entities
 {
     public class BombaAgua : Actuador, IActuadorRiego
     {
-        public int tiempoRiego { get; set; }
+        public int TiempoRiego { get; set; }
 
         public BombaAgua(string id)
         {
-            this.id = id;
-            this.modo = "manual";
+            this.Id = id;
+            this.Modo = "manual";
         }
 
         public void activarPor(int seg)
         {
-            tiempoRiego = seg;
-            encendido = true;
+            TiempoRiego = seg;
+            Encendido = true;
         }
 
         public void desactivar()
         {
-            encendido = false;
-            tiempoRiego = 0;
+            Encendido = false;
+            TiempoRiego = 0;
         }
 
         public bool estaActivo()
         {
-            return encendido;
+            return Encendido;
         }
     }
 }

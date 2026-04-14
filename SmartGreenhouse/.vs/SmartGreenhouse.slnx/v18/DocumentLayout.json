@@ -3,28 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6D7B6787-E3ED-77F8-F86E-F56F7D637CD8}|SmartGreenhouse.Presentation\\SmartGreenhouse.Presentation.csproj|c:\\users\\diego\\onedrive\\documentos\\smartgreenhouse\\smartgreenhouse\\smartgreenhouse.presentation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D7B6787-E3ED-77F8-F86E-F56F7D637CD8}|SmartGreenhouse.Presentation\\SmartGreenhouse.Presentation.csproj|solutionrelative:smartgreenhouse.presentation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{06CD7E50-6580-7DBF-78F1-0A784D4EFBFC}|SmartGreenhouse.Domain\\SmartGreenhouse.Domain.csproj|c:\\users\\diego\\onedrive\\documentos\\smartgreenhouse\\smartgreenhouse\\smartgreenhouse.domain\\entities\\bombaagua.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06CD7E50-6580-7DBF-78F1-0A784D4EFBFC}|SmartGreenhouse.Domain\\SmartGreenhouse.Domain.csproj|solutionrelative:smartgreenhouse.domain\\entities\\bombaagua.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Application\\Services\\GreenhouseController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SmartGreenhouse.Application\\Services\\GreenhouseController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{06CD7E50-6580-7DBF-78F1-0A784D4EFBFC}|SmartGreenhouse.Domain\\SmartGreenhouse.Domain.csproj|c:\\users\\diego\\onedrive\\documentos\\smartgreenhouse\\smartgreenhouse\\smartgreenhouse.domain\\entities\\irrigationevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06CD7E50-6580-7DBF-78F1-0A784D4EFBFC}|SmartGreenhouse.Domain\\SmartGreenhouse.Domain.csproj|solutionrelative:smartgreenhouse.domain\\entities\\irrigationevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Repository\\InMemoryGreenhouseRepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SmartGreenhouse.Repository\\InMemoryGreenhouseRepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Application\\Services\\IrrigationService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SmartGreenhouse.Application\\Services\\IrrigationService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D7B6787-E3ED-77F8-F86E-F56F7D637CD8}|SmartGreenhouse.Presentation\\SmartGreenhouse.Presentation.csproj|c:\\users\\diego\\onedrive\\documentos\\smartgreenhouse\\smartgreenhouse\\smartgreenhouse.presentation\\smartgreenhouse.presentation.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{6D7B6787-E3ED-77F8-F86E-F56F7D637CD8}|SmartGreenhouse.Presentation\\SmartGreenhouse.Presentation.csproj|solutionrelative:smartgreenhouse.presentation\\smartgreenhouse.presentation.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+      "AbsoluteMoniker": "D:0:0:{06CD7E50-6580-7DBF-78F1-0A784D4EFBFC}|SmartGreenhouse.Domain\\SmartGreenhouse.Domain.csproj|c:\\users\\diego\\onedrive\\documentos\\smartgreenhouse\\smartgreenhouse\\smartgreenhouse.domain\\entities\\sensor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06CD7E50-6580-7DBF-78F1-0A784D4EFBFC}|SmartGreenhouse.Domain\\SmartGreenhouse.Domain.csproj|solutionrelative:smartgreenhouse.domain\\entities\\sensor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{06CD7E50-6580-7DBF-78F1-0A784D4EFBFC}|SmartGreenhouse.Domain\\SmartGreenhouse.Domain.csproj|c:\\users\\diego\\onedrive\\documentos\\smartgreenhouse\\smartgreenhouse\\smartgreenhouse.domain\\entities\\climatestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{06CD7E50-6580-7DBF-78F1-0A784D4EFBFC}|SmartGreenhouse.Domain\\SmartGreenhouse.Domain.csproj|solutionrelative:smartgreenhouse.domain\\entities\\climatestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06CD7E50-6580-7DBF-78F1-0A784D4EFBFC}|SmartGreenhouse.Domain\\SmartGreenhouse.Domain.csproj|c:\\users\\diego\\onedrive\\documentos\\smartgreenhouse\\smartgreenhouse\\smartgreenhouse.domain\\entities\\actuador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06CD7E50-6580-7DBF-78F1-0A784D4EFBFC}|SmartGreenhouse.Domain\\SmartGreenhouse.Domain.csproj|solutionrelative:smartgreenhouse.domain\\entities\\actuador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D7B6787-E3ED-77F8-F86E-F56F7D637CD8}|SmartGreenhouse.Presentation\\SmartGreenhouse.Presentation.csproj|c:\\users\\diego\\onedrive\\documentos\\smartgreenhouse\\smartgreenhouse\\smartgreenhouse.presentation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D7B6787-E3ED-77F8-F86E-F56F7D637CD8}|SmartGreenhouse.Presentation\\SmartGreenhouse.Presentation.csproj|solutionrelative:smartgreenhouse.presentation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D7B6787-E3ED-77F8-F86E-F56F7D637CD8}|SmartGreenhouse.Presentation\\SmartGreenhouse.Presentation.csproj|c:\\users\\diego\\onedrive\\documentos\\smartgreenhouse\\smartgreenhouse\\smartgreenhouse.presentation\\smartgreenhouse.presentation.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{6D7B6787-E3ED-77F8-F86E-F56F7D637CD8}|SmartGreenhouse.Presentation\\SmartGreenhouse.Presentation.csproj|solutionrelative:smartgreenhouse.presentation\\smartgreenhouse.presentation.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{06CD7E50-6580-7DBF-78F1-0A784D4EFBFC}|SmartGreenhouse.Domain\\SmartGreenhouse.Domain.csproj|c:\\users\\diego\\onedrive\\documentos\\smartgreenhouse\\smartgreenhouse\\smartgreenhouse.domain\\rules\\reglariego.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -57,6 +61,18 @@
     {
       "AbsoluteMoniker": "D:0:0:{06CD7E50-6580-7DBF-78F1-0A784D4EFBFC}|SmartGreenhouse.Domain\\SmartGreenhouse.Domain.csproj|c:\\users\\diego\\onedrive\\documentos\\smartgreenhouse\\smartgreenhouse\\smartgreenhouse.domain\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{06CD7E50-6580-7DBF-78F1-0A784D4EFBFC}|SmartGreenhouse.Domain\\SmartGreenhouse.Domain.csproj|solutionrelative:smartgreenhouse.domain\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9370E072-0037-F268-04B7-640FBBD20731}|SmartGreenhouse.Application\\SmartGreenhouse.Application.csproj|c:\\users\\diego\\onedrive\\documentos\\smartgreenhouse\\smartgreenhouse\\smartgreenhouse.application\\services\\greenhousecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9370E072-0037-F268-04B7-640FBBD20731}|SmartGreenhouse.Application\\SmartGreenhouse.Application.csproj|solutionrelative:smartgreenhouse.application\\services\\greenhousecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{377FC329-93C1-BF53-341C-31842BE866DB}|SmartGreenhouse.Repository\\SmartGreenhouse.Repository.csproj|c:\\users\\diego\\onedrive\\documentos\\smartgreenhouse\\smartgreenhouse\\smartgreenhouse.repository\\inmemorygreenhouserepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{377FC329-93C1-BF53-341C-31842BE866DB}|SmartGreenhouse.Repository\\SmartGreenhouse.Repository.csproj|solutionrelative:smartgreenhouse.repository\\inmemorygreenhouserepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9370E072-0037-F268-04B7-640FBBD20731}|SmartGreenhouse.Application\\SmartGreenhouse.Application.csproj|c:\\users\\diego\\onedrive\\documentos\\smartgreenhouse\\smartgreenhouse\\smartgreenhouse.application\\services\\irrigationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9370E072-0037-F268-04B7-640FBBD20731}|SmartGreenhouse.Application\\SmartGreenhouse.Application.csproj|solutionrelative:smartgreenhouse.application\\services\\irrigationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -70,19 +86,59 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SmartGreenhouse.Presentation.csproj",
-              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Presentation\\SmartGreenhouse.Presentation.csproj",
-              "RelativeDocumentMoniker": "SmartGreenhouse.Presentation\\SmartGreenhouse.Presentation.csproj",
-              "ToolTip": "C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Presentation\\SmartGreenhouse.Presentation.csproj",
-              "RelativeToolTip": "SmartGreenhouse.Presentation\\SmartGreenhouse.Presentation.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-04-13T01:31:48.88Z"
+              "DocumentIndex": 2,
+              "Title": "Sensor.cs",
+              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Domain\\Entities\\Sensor.cs",
+              "RelativeDocumentMoniker": "SmartGreenhouse.Domain\\Entities\\Sensor.cs",
+              "ToolTip": "C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Domain\\Entities\\Sensor.cs",
+              "RelativeToolTip": "SmartGreenhouse.Domain\\Entities\\Sensor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-14T01:05:49.962Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "IrrigationEvent.cs",
+              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Domain\\Entities\\IrrigationEvent.cs",
+              "RelativeDocumentMoniker": "SmartGreenhouse.Domain\\Entities\\IrrigationEvent.cs",
+              "ToolTip": "C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Domain\\Entities\\IrrigationEvent.cs",
+              "RelativeToolTip": "SmartGreenhouse.Domain\\Entities\\IrrigationEvent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-14T01:05:43.08Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BombaAgua.cs",
+              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Domain\\Entities\\BombaAgua.cs",
+              "RelativeDocumentMoniker": "SmartGreenhouse.Domain\\Entities\\BombaAgua.cs",
+              "ToolTip": "C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Domain\\Entities\\BombaAgua.cs",
+              "RelativeToolTip": "SmartGreenhouse.Domain\\Entities\\BombaAgua.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAwA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-14T00:58:45.249Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Actuador.cs",
+              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Domain\\Entities\\Actuador.cs",
+              "RelativeDocumentMoniker": "SmartGreenhouse.Domain\\Entities\\Actuador.cs",
+              "ToolTip": "C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Domain\\Entities\\Actuador.cs",
+              "RelativeToolTip": "SmartGreenhouse.Domain\\Entities\\Actuador.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-14T00:58:33.698Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "GreenhouseController.cs",
               "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Application\\Services\\GreenhouseController.cs",
               "RelativeDocumentMoniker": "SmartGreenhouse.Application\\Services\\GreenhouseController.cs",
@@ -94,20 +150,45 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
+              "Title": "ClimateState.cs",
+              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Domain\\Entities\\ClimateState.cs",
+              "RelativeDocumentMoniker": "SmartGreenhouse.Domain\\Entities\\ClimateState.cs",
+              "ToolTip": "C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Domain\\Entities\\ClimateState.cs",
+              "RelativeToolTip": "SmartGreenhouse.Domain\\Entities\\ClimateState.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAYAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T00:43:01.486Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SmartGreenhouse.Presentation.csproj",
+              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Presentation\\SmartGreenhouse.Presentation.csproj",
+              "RelativeDocumentMoniker": "SmartGreenhouse.Presentation\\SmartGreenhouse.Presentation.csproj",
+              "ToolTip": "C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Presentation\\SmartGreenhouse.Presentation.csproj",
+              "RelativeToolTip": "SmartGreenhouse.Presentation\\SmartGreenhouse.Presentation.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-04-13T01:31:48.88Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Presentation\\Program.cs",
               "RelativeDocumentMoniker": "SmartGreenhouse.Presentation\\Program.cs",
               "ToolTip": "C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Presentation\\Program.cs",
               "RelativeToolTip": "SmartGreenhouse.Presentation\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABQAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAABQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-13T00:16:49.536Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 16,
               "Title": "InMemoryGreenhouseRepo.cs",
               "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Repository\\InMemoryGreenhouseRepo.cs",
               "RelativeDocumentMoniker": "SmartGreenhouse.Repository\\InMemoryGreenhouseRepo.cs",
@@ -119,7 +200,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 17,
               "Title": "IrrigationService.cs",
               "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Application\\Services\\IrrigationService.cs",
               "RelativeDocumentMoniker": "SmartGreenhouse.Application\\Services\\IrrigationService.cs",
@@ -131,19 +212,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ClimateState.cs",
-              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Domain\\Entities\\ClimateState.cs",
-              "RelativeDocumentMoniker": "SmartGreenhouse.Domain\\Entities\\ClimateState.cs",
-              "ToolTip": "C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Domain\\Entities\\ClimateState.cs",
-              "RelativeToolTip": "SmartGreenhouse.Domain\\Entities\\ClimateState.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T00:43:01.486Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "ReglaRiego.cs",
               "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Domain\\Rules\\ReglaRiego.cs",
               "RelativeDocumentMoniker": "SmartGreenhouse.Domain\\Rules\\ReglaRiego.cs",
@@ -155,7 +224,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "IActuadorRiego.cs",
               "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Domain\\Interfaces\\IActuadorRiego.cs",
               "RelativeDocumentMoniker": "SmartGreenhouse.Domain\\Interfaces\\IActuadorRiego.cs",
@@ -167,7 +236,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "IGreenhouseRepository.cs",
               "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Domain\\Interfaces\\IGreenhouseRepository.cs",
               "RelativeDocumentMoniker": "SmartGreenhouse.Domain\\Interfaces\\IGreenhouseRepository.cs",
@@ -179,7 +248,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "ISensorHumedad.cs",
               "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Domain\\Interfaces\\ISensorHumedad.cs",
               "RelativeDocumentMoniker": "SmartGreenhouse.Domain\\Interfaces\\ISensorHumedad.cs",
@@ -191,7 +260,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Class1.cs",
               "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Application\\Class1.cs",
               "RelativeDocumentMoniker": "SmartGreenhouse.Application\\Class1.cs",
@@ -203,7 +272,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "SmartGreenhouse.Domain.csproj",
               "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Domain\\SmartGreenhouse.Domain.csproj",
               "RelativeDocumentMoniker": "SmartGreenhouse.Domain\\SmartGreenhouse.Domain.csproj",
@@ -215,7 +284,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "Class1.cs",
               "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Repository\\Class1.cs",
               "RelativeDocumentMoniker": "SmartGreenhouse.Repository\\Class1.cs",
@@ -227,7 +296,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "Class1.cs",
               "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Documentos\\SmartGreenhouse\\SmartGreenhouse\\SmartGreenhouse.Domain\\Class1.cs",
               "RelativeDocumentMoniker": "SmartGreenhouse.Domain\\Class1.cs",

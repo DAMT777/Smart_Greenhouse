@@ -4,44 +4,44 @@ namespace SmartGreenhouse.Application.Services
 {
     public class VentilationService
     {
-        private Ventilador ventilador;
-        private float umbralTemp;
+        private Ventilador _ventilador;
+        private float _umbralTemp;
 
         public VentilationService(Ventilador ventilador, float umbralTemp)
         {
-            this.ventilador = ventilador;
-            this.umbralTemp = umbralTemp;
+            _ventilador = ventilador;
+            _umbralTemp = umbralTemp;
         }
 
         public void actualizarUmbralTemp(float valor)
         {
-            umbralTemp = valor;
+            _umbralTemp = valor;
         }
 
         public void evaluarTemperatura(ClimateState state)
         {
-            if (state.Temperatura > umbralTemp)
+            if (state.Temperatura > _umbralTemp)
             {
-                ventilador.encender();
-                ventilador.setVelocidad(100);
+                _ventilador.encender();
+                _ventilador.setVelocidad(100);
             }
             else
             {
-                ventilador.apagar();
-                ventilador.setVelocidad(0);
+                _ventilador.apagar();
+                _ventilador.setVelocidad(0);
             }
         }
 
         public void forzarVentilacion(int nivel)
         {
-            ventilador.encender();
-            ventilador.setVelocidad(nivel);
+            _ventilador.encender();
+            _ventilador.setVelocidad(nivel);
         }
 
         public void detenerVentilacion()
         {
-            ventilador.apagar();
-            ventilador.setVelocidad(0);
+            _ventilador.apagar();
+            _ventilador.setVelocidad(0);
         }
     }
 }

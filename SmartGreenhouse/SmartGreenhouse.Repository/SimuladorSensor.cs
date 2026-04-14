@@ -4,16 +4,16 @@ namespace SmartGreenhouse.Repository
 {
     public class SimuladorSensor : ISensorHumedad
     {
-        public float valorSimulado { get; set; }
+        public float ValorSimulado { get; set; }
 
         public SimuladorSensor(float valorSimulado)
         {
-            this.valorSimulado = valorSimulado;
+            this.ValorSimulado = valorSimulado;
         }
 
         public float leerValor()
         {
-            return valorSimulado;
+            return ValorSimulado;
         }
     }
 }
