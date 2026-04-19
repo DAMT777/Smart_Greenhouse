@@ -1,14 +1,32 @@
 using System;
 using SmartGreenhouse.Application.Services;
 using SmartGreenhouse.Domain.Entities;
+using SmartGreenhouse.Domain.Interfaces;
 using SmartGreenhouse.Domain.Rules;
 using SmartGreenhouse.Repository;
+using SmartGreenhouse.Repository.Serial;
 
-var sensorHumedad = new SensorHumedadSuelo
+
+bool usarArduino = false; 
+string puerto = "COM4";   
+
+
+ISensorHumedad sensorHumedad;
+IActuadorRiego bomba;
+
+if (usarArduino)
 {
-    Id = "HUM-01",
-    PinArduino = 2
-};
+    var adapter = new ArduinoSerialAdapter(puerto);
+    sensorHumedad = new SensorHumedadSueloSerial(adapter, "HUM-01");
+    bomba = new BombaAguaSerial(adapter);
+    Console.WriteLine("[Sistema] Modo Arduino real");
+}
+else
+{
+    sensorHumedad = new SensorHumedadSuelo { Id = "HUM-01", PinArduino = 0 };
+    bomba = new BombaAgua { PinRele = 7 };
+    Console.WriteLine("[Sistema] Modo simulación");
+}
 
 var sensorTemp = new SensorTemperatura
 {
@@ -17,17 +35,13 @@ var sensorTemp = new SensorTemperatura
     Unidad = "C"
 };
 
-var bomba = new BombaAgua
-{
-    PinRele = 4
-};
-
 var ventilador = new Ventilador
 {
     PinPWM = 5
 };
 
 var repo = new FileGreenhouseRepository();
+
 var regla = new ReglaRiego
 {
     UmbralHumedadMinima = 50f,
@@ -39,6 +53,7 @@ var monitoreo = new SensorMonitoringService(sensorHumedad, sensorTemp);
 var riego = new IrrigationService(repo, bomba, regla);
 var ventilacion = new VentilationService(ventilador, umbralTemp: 30f);
 var controller = new GreenhouseController(monitoreo, riego, ventilacion);
+
 
 controller.IniciarSistema();
 
@@ -60,27 +75,30 @@ while (true)
     string? input = Console.ReadLine();
 
     if (input is null)
-    {
         continue;
-    }
 
     switch (input.Trim())
     {
         case "1":
             controller.EjecutarCicloMonitoreo();
             break;
+
         case "2":
-            riego.ForzarRiegoManual(30);
+            riego.ForzarRiegoManual(regla.DuracionRiegoRecomendada);
             break;
+
         case "3":
             riego.DetenerRiego();
             break;
+
         case "4":
             ventilacion.ForzarVentilacion(3);
             break;
+
         case "5":
             ventilacion.DetenerVentilacion();
             break;
+
         case "6":
             var historial = repo.ObtenerHistorial();
             if (historial.Count == 0)
@@ -89,36 +107,55 @@ while (true)
             }
             else
             {
+                Console.WriteLine($"{"Fecha",-22} {"Causa",-10} {"Duración",-10} {"Antes",-8} {"Después",-8} {"Exitoso",-8}");
+                Console.WriteLine(new string('-', 70));
                 foreach (var evento in historial)
                 {
-                    Console.WriteLine($"[{evento.Timestamp:yyyy-MM-dd HH:mm:ss}] Causa={evento.Causa}, Duracion={evento.DuracionSeg}s, Antes={evento.HumedadAntes:F2}, Despues={evento.HumedadDespues:F2}");
+                    Console.WriteLine(
+                        $"[{evento.Timestamp:yyyy-MM-dd HH:mm:ss}] " +
+                        $"Causa={evento.Causa,-10} " +
+                        $"Duracion={evento.DuracionSeg}s " +
+                        $"Antes={evento.HumedadAntes:F2} " +
+                        $"Despues={evento.HumedadDespues:F2} " +
+                        $"Exitoso={evento.EsExitoso()}"
+                    );
                 }
             }
-
             break;
+
         case "7":
-            Console.Write("Nuevo umbral de humedad: ");
+            Console.Write("Nuevo umbral de humedad (actual: " + regla.UmbralHumedadMinima + "): ");
             if (float.TryParse(Console.ReadLine(), out float nuevoUmbralHumedad))
             {
                 riego.ActualizarUmbralRiego(nuevoUmbralHumedad);
-                Console.WriteLine("Umbral de humedad actualizado.");
+                Console.WriteLine($"[Sistema] Umbral de humedad actualizado a {nuevoUmbralHumedad}.");
             }
-
+            else
+            {
+                Console.WriteLine("[Error] Valor no válido.");
+            }
             break;
+
         case "8":
-            Console.Write("Nuevo umbral de temperatura: ");
+            Console.Write("Nuevo umbral de temperatura (actual: " + ventilacion.UmbralTemp + "): ");
             if (float.TryParse(Console.ReadLine(), out float nuevoUmbralTemp))
             {
                 ventilacion.ActualizarUmbralTemp(nuevoUmbralTemp);
-                Console.WriteLine("Umbral de temperatura actualizado.");
+                Console.WriteLine($"[Sistema] Umbral de temperatura actualizado a {nuevoUmbralTemp}.");
             }
-
+            else
+            {
+                Console.WriteLine("[Error] Valor no válido.");
+            }
             break;
+
         case "9":
             controller.DetenerSistema();
+            Console.WriteLine("[Sistema] Hasta luego.");
             return;
+
         default:
-            Console.WriteLine("Opcion no valida.");
+            Console.WriteLine("[Error] Opción no válida. Seleccione entre 1 y 9.");
             break;
     }
 }
