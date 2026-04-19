@@ -11,6 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.IO.Ports" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="InMemory\" />
     <Folder Include="File\" />
     <Folder Include="Simulators\" />

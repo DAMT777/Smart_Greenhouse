@@ -40,4 +40,6 @@ public class VentilationService
     {
         _umbralTemp = valor;
     }
+
+    public float UmbralTemp { get; private set; }
 }

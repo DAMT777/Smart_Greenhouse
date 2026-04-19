@@ -7,7 +7,7 @@ using SmartGreenhouse.Repository;
 using SmartGreenhouse.Repository.Serial;
 
 
-bool usarArduino = false; 
+bool usarArduino = true; 
 string puerto = "COM4";   
 
 
