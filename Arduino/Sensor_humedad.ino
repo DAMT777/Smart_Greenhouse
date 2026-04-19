@@ -16,7 +16,8 @@ void loop() {
 
         if (comando == "READ_HUMEDAD") {
             int rawValue = analogRead(sensorPin);
-            float humedad = map(rawValue, 0, 1023, 0, 100);
+            
+            float humedad = map(rawValue, 0, 1023, 100, 0);
             Serial.println(humedad);
         }
         else if (comando == "BOMBA_ON") {
