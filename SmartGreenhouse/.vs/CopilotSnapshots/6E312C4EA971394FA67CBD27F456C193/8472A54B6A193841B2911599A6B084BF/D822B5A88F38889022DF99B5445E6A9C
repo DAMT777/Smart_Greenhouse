@@ -1,0 +1,124 @@
+﻿using System;
+using SmartGreenhouse.Application.Services;
+using SmartGreenhouse.Domain.Entities;
+using SmartGreenhouse.Domain.Rules;
+using SmartGreenhouse.Repository;
+
+var sensorHumedad = new SensorHumedadSuelo
+{
+    Id = "HUM-01",
+    PinArduino = 2
+};
+
+var sensorTemp = new SensorTemperatura
+{
+    Id = "TEMP-01",
+    PinArduino = 3,
+    Unidad = "C"
+};
+
+var bomba = new BombaAgua
+{
+    PinRele = 4
+};
+
+var ventilador = new Ventilador
+{
+    PinPWM = 5
+};
+
+var repo = new InMemoryGreenhouseRepo();
+var regla = new ReglaRiego
+{
+    UmbralHumedadMinima = 50f,
+    DuracionRiegoRecomendada = 30,
+    HorasEntreRiegos = 6
+};
+
+var monitoreo = new SensorMonitoringService(sensorHumedad, sensorTemp);
+var riego = new IrrigationService(repo, bomba, regla);
+var ventilacion = new VentilationService(ventilador, umbralTemp: 30f);
+var controller = new GreenhouseController(monitoreo, riego, ventilacion, regla);
+
+controller.IniciarSistema();
+
+while (true)
+{
+    Console.WriteLine();
+    Console.WriteLine("=== SMART GREENHOUSE ===");
+    Console.WriteLine("1. READ");
+    Console.WriteLine("2. IRRIGATE ON");
+    Console.WriteLine("3. IRRIGATE OFF");
+    Console.WriteLine("4. FAN ON");
+    Console.WriteLine("5. FAN OFF");
+    Console.WriteLine("6. HISTORY");
+    Console.WriteLine("7. SET MOISTURE_THRESHOLD");
+    Console.WriteLine("8. SET TEMP_THRESHOLD");
+    Console.WriteLine("9. EXIT");
+    Console.Write("Seleccione una opcion: ");
+
+    string? input = Console.ReadLine();
+
+    if (input is null)
+    {
+        continue;
+    }
+
+    switch (input.Trim())
+    {
+        case "1":
+            controller.EjecutarCicloMonitoreo();
+            break;
+        case "2":
+            riego.ForzarRiegoManual(30);
+            break;
+        case "3":
+            riego.DetenerRiego();
+            break;
+        case "4":
+            ventilacion.ForzarVentilacion(3);
+            break;
+        case "5":
+            ventilacion.DetenerVentilacion();
+            break;
+        case "6":
+            var historial = repo.ObtenerHistorial();
+            if (historial.Count == 0)
+            {
+                Console.WriteLine("No hay eventos de riego registrados.");
+            }
+            else
+            {
+                foreach (var evento in historial)
+                {
+                    Console.WriteLine($"[{evento.Timestamp:yyyy-MM-dd HH:mm:ss}] Causa={evento.Causa}, Duracion={evento.DuracionSeg}s, Antes={evento.HumedadAntes:F2}, Despues={evento.HumedadDespues:F2}");
+                }
+            }
+
+            break;
+        case "7":
+            Console.Write("Nuevo umbral de humedad: ");
+            if (float.TryParse(Console.ReadLine(), out float nuevoUmbralHumedad))
+            {
+                regla.ActualizarUmbral(nuevoUmbralHumedad);
+                Console.WriteLine("Umbral de humedad actualizado.");
+            }
+
+            break;
+        case "8":
+            Console.Write("Nuevo umbral de temperatura: ");
+            if (float.TryParse(Console.ReadLine(), out float nuevoUmbralTemp))
+            {
+                ventilacion.ActualizarUmbralTemp(nuevoUmbralTemp);
+                Console.WriteLine("Umbral de temperatura actualizado.");
+            }
+
+            break;
+        case "9":
+            controller.DetenerSistema();
+            return;
+        default:
+            Console.WriteLine("Opcion no valida.");
+            break;
+    }
+}

@@ -1,11 +1,17 @@
-namespace SmartGreenhouse.Domain.Entities
-{
-    public abstract class Sensor
-    {
-        public string Id { get; set; }
-        public float UltimaLectura { get; set; }
-        public string Tipo { get; set; }
+using SmartGreenhouse.Domain.Interfaces;
 
-        public abstract float leerValor();
+namespace SmartGreenhouse.Domain.Entities;
+
+public abstract class Sensor : ISensor
+{
+    public string Id { get; set; } = string.Empty;
+
+    public float UltimaLectura { get; set; }
+
+    public abstract float LeerValor();
+
+    public string GetId()
+    {
+        return Id;
     }
 }

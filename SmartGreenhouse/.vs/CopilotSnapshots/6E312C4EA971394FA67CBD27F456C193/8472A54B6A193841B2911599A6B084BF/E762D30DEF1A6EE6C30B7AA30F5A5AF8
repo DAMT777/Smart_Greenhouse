@@ -1,0 +1,151 @@
+﻿using System;
+using SmartGreenhouse.Domain.Rules;
+
+namespace SmartGreenhouse.Application.Services;
+
+/// <summary>
+/// Controlador principal que orquesta servicios del invernadero.
+/// </summary>
+public class GreenhouseController
+{
+    private SensorMonitoringService _monitoreoSensores;
+    private IrrigationService _servicioRiego;
+    private VentilationService _ventilacionSvc;
+    /// <summary>
+    /// Inicializa una nueva instancia del controlador principal.
+    /// </summary>
+    /// <param name="monitoreoSensores">Servicio de monitoreo.</param>
+    /// <param name="servicioRiego">Servicio de riego.</param>
+    /// <param name="ventilacionSvc">Servicio de ventilación.</param>
+    /// <param name="regla">Regla de riego.</param>
+    public GreenhouseController(
+        SensorMonitoringService monitoreoSensores,
+        IrrigationService servicioRiego,
+        VentilationService ventilacionSvc)
+    {
+        _monitoreoSensores = monitoreoSensores;
+        _servicioRiego = servicioRiego;
+        _ventilacionSvc = ventilacionSvc;
+    }
+
+    /// <summary>
+    /// Ejecuta un ciclo completo de monitoreo y control.
+    /// </summary>
+    public void EjecutarCicloMonitoreo()
+    {
+        var state = _monitoreoSensores.ObtenerEstadoActual();
+        _servicioRiego.EvaluarYEjecutar(state);
+        _ventilacionSvc.EvaluarTemperatura(state);
+        Console.WriteLine($"Estado -> Humedad: {state.Humedad:F2}% | Temperatura: {state.Temperatura:F2} C | Modo: {state.ModoActual}");
+    }
+
+    /// <summary>
+    /// Inicia el sistema.
+    /// </summary>
+    public void IniciarSistema()
+    {
+        Console.WriteLine("Sistema SmartGreenhouse iniciado.");
+    }
+
+    /// <summary>
+    /// Detiene el sistema y apaga actuadores.
+    /// </summary>
+    public void DetenerSistema()
+    {
+        _servicioRiego.DetenerRiego();
+        _ventilacionSvc.DetenerVentilacion();
+        Console.WriteLine("Sistema SmartGreenhouse detenido.");
+    }
+
+    /// <summary>
+    /// Procesa comandos de consola del usuario.
+    /// </summary>
+    /// <param name="cmd">Comando textual.</param>
+    public void ProcesarComando(string cmd)
+    {
+        if (string.IsNullOrWhiteSpace(cmd))
+        {
+            return;
+        }
+
+        string normalized = cmd.Trim().ToUpperInvariant();
+
+        if (normalized == "READ")
+        {
+            EjecutarCicloMonitoreo();
+            return;
+        }
+
+        if (normalized == "IRRIGATE ON")
+        {
+            _servicioRiego.ForzarRiegoManual(30);
+            return;
+        }
+
+        if (normalized == "IRRIGATE OFF")
+        {
+            _servicioRiego.DetenerRiego();
+            return;
+        }
+
+        if (normalized == "FAN ON")
+        {
+            _ventilacionSvc.ForzarVentilacion(3);
+            return;
+        }
+
+        if (normalized == "FAN OFF")
+        {
+            _ventilacionSvc.DetenerVentilacion();
+            return;
+        }
+
+        if (normalized.StartsWith("SET MOISTURE_THRESHOLD ", StringComparison.Ordinal))
+        {
+            string valueText = cmd.Trim().Substring("SET MOISTURE_THRESHOLD ".Length);
+            if (float.TryParse(valueText, out float value))
+            {
+                _regla.ActualizarUmbral(value);
+                Console.WriteLine($"Umbral de humedad actualizado a {value:F2}%.");
+            }
+
+            return;
+        }
+
+        if (normalized.StartsWith("SET TEMP_THRESHOLD ", StringComparison.Ordinal))
+        {
+            string valueText = cmd.Trim().Substring("SET TEMP_THRESHOLD ".Length);
+            if (float.TryParse(valueText, out float value))
+            {
+                _ventilacionSvc.ActualizarUmbralTemp(value);
+                Console.WriteLine($"Umbral de temperatura actualizado a {value:F2} C.");
+            }
+
+            return;
+        }
+
+        if (normalized == "HISTORY")
+        {
+            var fieldInfo = typeof(IrrigationService).GetField("_repositorio", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            if (fieldInfo?.GetValue(_servicioRiego) is SmartGreenhouse.Domain.Interfaces.IGreenhouseRepository repositorio)
+            {
+                var historial = repositorio.ObtenerHistorial();
+                if (historial.Count == 0)
+                {
+                    Console.WriteLine("No hay eventos de riego registrados.");
+                }
+                else
+                {
+                    foreach (var evento in historial)
+                    {
+                        Console.WriteLine($"[{evento.Timestamp:yyyy-MM-dd HH:mm:ss}] Causa={evento.Causa}, Duracion={evento.DuracionSeg}s, Antes={evento.HumedadAntes:F2}, Despues={evento.HumedadDespues:F2}");
+                    }
+                }
+            }
+
+            return;
+        }
+
+        Console.WriteLine($"Comando no reconocido: {cmd}");
+    }
+}

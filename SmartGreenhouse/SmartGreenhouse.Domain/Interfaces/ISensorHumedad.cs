@@ -1,8 +1,5 @@
-﻿using System;
-namespace SmartGreenhouse.Domain.Interfaces
+namespace SmartGreenhouse.Domain.Interfaces;
+
+public interface ISensorHumedad : ISensor
 {
-    public interface ISensorHumedad
-    {
-        float leerValor();
-    }
 }

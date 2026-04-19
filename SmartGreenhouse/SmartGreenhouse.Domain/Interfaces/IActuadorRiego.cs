@@ -1,10 +1,10 @@
-﻿using System;
-namespace SmartGreenhouse.Domain.Interfaces
+namespace SmartGreenhouse.Domain.Interfaces;
+
+public interface IActuadorRiego
 {
-    public interface IActuadorRiego
-    {
-        void desactivar();
-        bool estaActivo();
-        void activarPor(int seg);
-    }
+    void ActivarPor(int seg);
+
+    void Desactivar();
+
+    bool EstaActivo();
 }

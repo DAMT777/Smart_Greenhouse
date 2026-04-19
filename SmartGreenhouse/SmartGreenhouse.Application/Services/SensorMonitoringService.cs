@@ -2,29 +2,35 @@ using System;
 using SmartGreenhouse.Domain.Entities;
 using SmartGreenhouse.Domain.Interfaces;
 
-namespace SmartGreenhouse.Application.Services
+namespace SmartGreenhouse.Application.Services;
+
+public class SensorMonitoringService
 {
-    public class SensorMonitoringService
+    private ISensorHumedad _sensorSuelo;
+    private ISensorTemperatura _sensorTemp;
+
+    public SensorMonitoringService(ISensorHumedad sensorSuelo, ISensorTemperatura sensorTemp)
     {
-        private ISensorHumedad _sensorSuelo;
-        private SensorTemperatura _sensorTemp;
+        _sensorSuelo = sensorSuelo;
+        _sensorTemp = sensorTemp;
+    }
 
-        public SensorMonitoringService(ISensorHumedad sensorSuelo, SensorTemperatura sensorTemp)
-        {
-            _sensorSuelo = sensorSuelo;
-            _sensorTemp = sensorTemp;
-        }
+    public ClimateState ObtenerEstadoActual()
+    {
+        float humedad = _sensorSuelo.LeerValor();
+        float temperatura = _sensorTemp.LeerValor();
 
-        public ClimateState obtenerEstadoActual()
+        return new ClimateState
         {
-            float humedad = _sensorSuelo.leerValor();
-            float temperatura = _sensorTemp.leerValor();
-            return new ClimateState(humedad, temperatura, DateTime.Now, "auto");
-        }
+            Humedad = humedad,
+            Temperatura = temperatura,
+            Timestamp = DateTime.Now,
+            ModoActual = "AUTO"
+        };
+    }
 
-        public bool validarLectura(float valor)
-        {
-            return valor >= 0 && valor <= 100;
-        }
+    public bool ValidarLectura(float valor)
+    {
+        return valor >= 0 && valor <= 100;
     }
 }

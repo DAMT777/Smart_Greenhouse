@@ -1,0 +1,43 @@
+﻿using System.Collections.Generic;
+using SmartGreenhouse.Domain.Entities;
+using SmartGreenhouse.Domain.Interfaces;
+
+namespace SmartGreenhouse.Repository;
+
+/// <summary>
+/// Implementación en memoria del repositorio del invernadero.
+/// </summary>
+public class InMemoryGreenhouseRepo : IGreenhouseRepository
+{
+    private List<float> _historialLecturas = new();
+    private List<IrrigationEvent> _historialEventos = new();
+
+    /// <summary>
+    /// Guarda una lectura de humedad en memoria.
+    /// </summary>
+    /// <param name="valor">Valor de humedad.</param>
+    public void GuardarLecturaHumedad(float valor)
+    {
+        _historialLecturas.Add(valor);
+        Console.WriteLine($"Lectura guardada en memoria: {valor:F2}%");
+    }
+
+    /// <summary>
+    /// Registra un evento de riego en memoria.
+    /// </summary>
+    /// <param name="evento">Evento de riego.</param>
+    public void RegistrarEvento(IrrigationEvent evento)
+    {
+        _historialEventos.Add(evento);
+        Console.WriteLine($"Evento registrado en memoria: {evento.Causa} ({evento.DuracionSeg}s)");
+    }
+
+    /// <summary>
+    /// Obtiene el historial de eventos de riego almacenado en memoria.
+    /// </summary>
+    /// <returns>Lista de eventos de riego.</returns>
+    public List<IrrigationEvent> ObtenerHistorial()
+    {
+        return _historialEventos;
+    }
+}

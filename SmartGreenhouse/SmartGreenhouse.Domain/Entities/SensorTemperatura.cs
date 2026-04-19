@@ -1,19 +1,23 @@
-namespace SmartGreenhouse.Domain.Entities
+using SmartGreenhouse.Domain.Interfaces;
+
+namespace SmartGreenhouse.Domain.Entities;
+
+public class SensorTemperatura : Sensor, ISensorTemperatura
 {
-    public class SensorTemperatura : Sensor
+    private static readonly Random _random = new();
+
+    public int PinArduino { get; set; }
+
+    public string Unidad { get; set; } = string.Empty;
+
+    public override float LeerValor()
     {
-        public string Unidad { get; set; }
+        UltimaLectura = 15f + (float)(_random.NextDouble() * 25.0);
+        return UltimaLectura;
+    }
 
-        public SensorTemperatura(string id, string unidad)
-        {
-            this.Id = id;
-            this.Tipo = "Temperatura";
-            this.Unidad = unidad;
-        }
-
-        public override float leerValor()
-        {
-            return 0f;
-        }
+    public float LeerEnCelsius()
+    {
+        return LeerValor();
     }
 }

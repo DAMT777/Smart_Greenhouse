@@ -1,21 +1,21 @@
 using SmartGreenhouse.Domain.Interfaces;
 
-namespace SmartGreenhouse.Domain.Entities
+namespace SmartGreenhouse.Domain.Entities;
+
+public class SensorHumedadSuelo : Sensor, ISensorHumedad
 {
-    public class SensorHumedadSuelo : Sensor, ISensorHumedad
+    private static readonly Random _random = new();
+
+    public int PinArduino { get; set; }
+
+    public override float LeerValor()
     {
-        public float Calibracion { get; set; }
+        UltimaLectura = (float)(_random.NextDouble() * 100.0);
+        return UltimaLectura;
+    }
 
-        public SensorHumedadSuelo(string id, float calibracion)
-        {
-            this.Id = id;
-            this.Tipo = "HumedadSuelo";
-            this.Calibracion = calibracion;
-        }
-
-        public override float leerValor()
-        {
-            return 0f;
-        }
+    public void Calibrar()
+    {
+        Console.WriteLine($"Sensor de humedad {Id} calibrado en pin {PinArduino}.");
     }
 }

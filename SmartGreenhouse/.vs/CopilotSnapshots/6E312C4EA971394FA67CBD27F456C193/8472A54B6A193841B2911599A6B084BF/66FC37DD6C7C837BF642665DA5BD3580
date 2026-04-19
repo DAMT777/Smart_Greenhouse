@@ -1,0 +1,83 @@
+﻿using System;
+using SmartGreenhouse.Domain.Entities;
+using SmartGreenhouse.Domain.Interfaces;
+using SmartGreenhouse.Domain.Rules;
+
+namespace SmartGreenhouse.Application.Services;
+
+/// <summary>
+/// Servicio encargado de evaluar y ejecutar el riego.
+/// </summary>
+public class IrrigationService
+{
+    private IGreenhouseRepository _repositorio;
+    private IActuadorRiego _actuador;
+    private ReglaRiego _regla;
+
+    /// <summary>
+    /// Inicializa una nueva instancia del servicio de riego.
+    /// </summary>
+    /// <param name="repositorio">Repositorio de persistencia.</param>
+    /// <param name="actuador">Actuador de riego.</param>
+    /// <param name="regla">Regla de decisión de riego.</param>
+    public IrrigationService(IGreenhouseRepository repositorio, IActuadorRiego actuador, ReglaRiego regla)
+    {
+        _repositorio = repositorio;
+        _actuador = actuador;
+        _regla = regla;
+    }
+
+    /// <summary>
+    /// Evalúa el estado climático y ejecuta el riego si corresponde.
+    /// </summary>
+    /// <param name="state">Estado climático actual.</param>
+    public void EvaluarYEjecutar(ClimateState state)
+    {
+        _repositorio.GuardarLecturaHumedad(state.Humedad);
+
+        if (_regla.RequiereRiego(state.Humedad))
+        {
+            int duracion = _regla.GetDuracionRiego();
+            _actuador.ActivarPor(duracion);
+
+            var evento = new IrrigationEvent
+            {
+                DuracionSeg = duracion,
+                Causa = "AUTO",
+                Timestamp = DateTime.Now,
+                HumedadAntes = state.Humedad,
+                HumedadDespues = state.Humedad + 10f
+            };
+
+            _repositorio.RegistrarEvento(evento);
+        }
+    }
+
+    /// <summary>
+    /// Fuerza un riego manual por una duración definida.
+    /// </summary>
+    /// <param name="segundos">Duración manual en segundos.</param>
+    public void ForzarRiegoManual(int segundos)
+    {
+        _actuador.ActivarPor(segundos);
+
+        var evento = new IrrigationEvent
+        {
+            DuracionSeg = segundos,
+            Causa = "MANUAL",
+            Timestamp = DateTime.Now,
+            HumedadAntes = 0f,
+            HumedadDespues = 0f
+        };
+
+        _repositorio.RegistrarEvento(evento);
+    }
+
+    /// <summary>
+    /// Detiene el riego actual.
+    /// </summary>
+    public void DetenerRiego()
+    {
+        _actuador.Desactivar();
+    }
+}

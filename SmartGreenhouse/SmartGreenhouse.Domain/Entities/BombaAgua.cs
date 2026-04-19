@@ -1,32 +1,30 @@
 using SmartGreenhouse.Domain.Interfaces;
 
-namespace SmartGreenhouse.Domain.Entities
+namespace SmartGreenhouse.Domain.Entities;
+
+public class BombaAgua : IActuadorRiego
 {
-    public class BombaAgua : Actuador, IActuadorRiego
+    private bool _activo;
+
+    public int TiempoRiego { get; set; }
+
+    public int PinRele { get; set; }
+
+    public void ActivarPor(int seg)
     {
-        public int TiempoRiego { get; set; }
+        _activo = true;
+        TiempoRiego = seg;
+        Console.WriteLine($"Bomba de agua activada por {seg} segundos.");
+    }
 
-        public BombaAgua(string id)
-        {
-            this.Id = id;
-            this.Modo = "manual";
-        }
+    public void Desactivar()
+    {
+        _activo = false;
+        Console.WriteLine("Bomba de agua desactivada.");
+    }
 
-        public void activarPor(int seg)
-        {
-            TiempoRiego = seg;
-            Encendido = true;
-        }
-
-        public void desactivar()
-        {
-            Encendido = false;
-            TiempoRiego = 0;
-        }
-
-        public bool estaActivo()
-        {
-            return Encendido;
-        }
+    public bool EstaActivo()
+    {
+        return _activo;
     }
 }

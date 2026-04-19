@@ -1,31 +1,25 @@
-namespace SmartGreenhouse.Domain.Rules
+namespace SmartGreenhouse.Domain.Rules;
+
+public class ReglaRiego
 {
-    public class ReglaRiego
+    public float UmbralHumedadMinima { get; set; }
+
+    public int DuracionRiegoRecomendada { get; set; }
+
+    public int HorasEntreRiegos { get; set; }
+
+    public bool RequiereRiego(float humedadActual)
     {
-        public float UmbralHumedadMinima { get; private set; }
-        public int DuracionRiegoRecomendada { get; private set; }
-        public int HorasEntreRiegos { get; private set; }
+        return humedadActual < UmbralHumedadMinima;
+    }
 
-        public ReglaRiego(float umbralHumedadMinima, int duracionRiegoRecomendada, int horasEntreRiegos)
-        {
-            this.UmbralHumedadMinima = umbralHumedadMinima;
-            this.DuracionRiegoRecomendada = duracionRiegoRecomendada;
-            this.HorasEntreRiegos = horasEntreRiegos;
-        }
+    public int GetDuracionRiego()
+    {
+        return DuracionRiegoRecomendada;
+    }
 
-        public bool requiereRiego(float humedadActual)
-        {
-            return humedadActual < UmbralHumedadMinima;
-        }
-
-        public int getDuracionRiego()
-        {
-            return DuracionRiegoRecomendada;
-        }
-
-        public void actualizarUmbral(float nuevoUmbral)
-        {
-            UmbralHumedadMinima = nuevoUmbral;
-        }
+    public void ActualizarUmbral(float nuevoUmbral)
+    {
+        UmbralHumedadMinima = nuevoUmbral;
     }
 }

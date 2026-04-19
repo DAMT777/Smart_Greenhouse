@@ -1,18 +1,31 @@
-namespace SmartGreenhouse.Domain.Entities
+using SmartGreenhouse.Domain.Interfaces;
+
+namespace SmartGreenhouse.Domain.Entities;
+
+public class Ventilador : IActuadorVentilacion
 {
-    public class Ventilador : Actuador
+    private bool _activo;
+
+    public int Velocidad { get; set; }
+
+    public int PinPWM { get; set; }
+
+    public void SetVelocidad(int nivel)
     {
-        public int Velocidad { get; private set; }
+        Velocidad = nivel;
+        _activo = true;
+        Console.WriteLine($"Ventilador activado con nivel {nivel}.");
+    }
 
-        public Ventilador(string id)
-        {
-            this.Id = id;
-            this.Modo = "auto";
-        }
+    public void Detener()
+    {
+        Velocidad = 0;
+        _activo = false;
+        Console.WriteLine("Ventilador detenido.");
+    }
 
-        public void setVelocidad(int nivel)
-        {
-            Velocidad = nivel;
-        }
+    public bool EstaActivo()
+    {
+        return _activo;
     }
 }

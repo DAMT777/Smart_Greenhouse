@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using SmartGreenhouse.Domain.Entities;
 
-namespace SmartGreenhouse.Domain.Interfaces
+namespace SmartGreenhouse.Domain.Interfaces;
+
+public interface IGreenhouseRepository
 {
-    public interface IGreenhouseRepository
-    {
-        void guardarLecturaHumedad(float valor);
-        void registrarEvento(IrrigationEvent evento);
-        List<IrrigationEvent> obtenerHistorial();
-    }
+    void GuardarLecturaHumedad(float valor);
+
+    void RegistrarEvento(IrrigationEvent evento);
+
+    List<IrrigationEvent> ObtenerHistorial();
 }

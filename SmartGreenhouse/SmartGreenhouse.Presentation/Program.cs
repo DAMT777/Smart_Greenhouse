@@ -4,39 +4,121 @@ using SmartGreenhouse.Domain.Entities;
 using SmartGreenhouse.Domain.Rules;
 using SmartGreenhouse.Repository;
 
-// --- Wire up dependencies ---
-var simulador = new SimuladorSensor(45f);
-var sensorTemp = new SensorTemperatura("temp-01", "Celsius");
-var bomba = new BombaAgua("bomba-01");
-var ventilador = new Ventilador("vent-01");
-var repo = new InMemoryGreenhouseRepo();
-var regla = new ReglaRiego(umbralHumedadMinima: 50f, duracionRiegoRecomendada: 30, horasEntreRiegos: 6);
+var sensorHumedad = new SensorHumedadSuelo
+{
+    Id = "HUM-01",
+    PinArduino = 2
+};
 
-var monitoreo = new SensorMonitoringService(simulador, sensorTemp);
+var sensorTemp = new SensorTemperatura
+{
+    Id = "TEMP-01",
+    PinArduino = 3,
+    Unidad = "C"
+};
+
+var bomba = new BombaAgua
+{
+    PinRele = 4
+};
+
+var ventilador = new Ventilador
+{
+    PinPWM = 5
+};
+
+var repo = new FileGreenhouseRepository();
+var regla = new ReglaRiego
+{
+    UmbralHumedadMinima = 50f,
+    DuracionRiegoRecomendada = 30,
+    HorasEntreRiegos = 6
+};
+
+var monitoreo = new SensorMonitoringService(sensorHumedad, sensorTemp);
 var riego = new IrrigationService(repo, bomba, regla);
 var ventilacion = new VentilationService(ventilador, umbralTemp: 30f);
-var controller = new GreenhouseController(monitoreo, riego, ventilacion, regla);
+var controller = new GreenhouseController(monitoreo, riego, ventilacion);
 
-controller.iniciarSistema();
-
-// --- Menu loop ---
-Console.WriteLine("=== Smart Greenhouse ===");
-Console.WriteLine("Comandos: READ | IRRIGATE ON | IRRIGATE OFF | IRRIGATE AUTO | SET MOISTURE_THRESHOLD <val> | SET TEMP_THRESHOLD <val> | EXIT");
-Console.WriteLine();
+controller.IniciarSistema();
 
 while (true)
 {
-    Console.Write("> ");
-    var input = Console.ReadLine();
+    Console.WriteLine();
+    Console.WriteLine("=== SMART GREENHOUSE ===");
+    Console.WriteLine("1. READ");
+    Console.WriteLine("2. IRRIGATE ON");
+    Console.WriteLine("3. IRRIGATE OFF");
+    Console.WriteLine("4. FAN ON");
+    Console.WriteLine("5. FAN OFF");
+    Console.WriteLine("6. HISTORY");
+    Console.WriteLine("7. SET MOISTURE_THRESHOLD");
+    Console.WriteLine("8. SET TEMP_THRESHOLD");
+    Console.WriteLine("9. EXIT");
+    Console.Write("Seleccione una opcion: ");
 
-    if (input == null)
-        break;
+    string? input = Console.ReadLine();
 
-    if (input.Trim().ToUpperInvariant() == "EXIT")
+    if (input is null)
     {
-        controller.detenerSistema();
-        break;
+        continue;
     }
 
-    controller.procesarComando(input);
+    switch (input.Trim())
+    {
+        case "1":
+            controller.EjecutarCicloMonitoreo();
+            break;
+        case "2":
+            riego.ForzarRiegoManual(30);
+            break;
+        case "3":
+            riego.DetenerRiego();
+            break;
+        case "4":
+            ventilacion.ForzarVentilacion(3);
+            break;
+        case "5":
+            ventilacion.DetenerVentilacion();
+            break;
+        case "6":
+            var historial = repo.ObtenerHistorial();
+            if (historial.Count == 0)
+            {
+                Console.WriteLine("No hay eventos de riego registrados.");
+            }
+            else
+            {
+                foreach (var evento in historial)
+                {
+                    Console.WriteLine($"[{evento.Timestamp:yyyy-MM-dd HH:mm:ss}] Causa={evento.Causa}, Duracion={evento.DuracionSeg}s, Antes={evento.HumedadAntes:F2}, Despues={evento.HumedadDespues:F2}");
+                }
+            }
+
+            break;
+        case "7":
+            Console.Write("Nuevo umbral de humedad: ");
+            if (float.TryParse(Console.ReadLine(), out float nuevoUmbralHumedad))
+            {
+                riego.ActualizarUmbralRiego(nuevoUmbralHumedad);
+                Console.WriteLine("Umbral de humedad actualizado.");
+            }
+
+            break;
+        case "8":
+            Console.Write("Nuevo umbral de temperatura: ");
+            if (float.TryParse(Console.ReadLine(), out float nuevoUmbralTemp))
+            {
+                ventilacion.ActualizarUmbralTemp(nuevoUmbralTemp);
+                Console.WriteLine("Umbral de temperatura actualizado.");
+            }
+
+            break;
+        case "9":
+            controller.DetenerSistema();
+            return;
+        default:
+            Console.WriteLine("Opcion no valida.");
+            break;
+    }
 }

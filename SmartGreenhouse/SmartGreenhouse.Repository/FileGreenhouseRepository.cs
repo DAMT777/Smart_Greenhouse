@@ -1,34 +1,46 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Text.Json;
 using SmartGreenhouse.Domain.Entities;
 using SmartGreenhouse.Domain.Interfaces;
 
-namespace SmartGreenhouse.Repository
+namespace SmartGreenhouse.Repository;
+
+public class FileGreenhouseRepository : IGreenhouseRepository
 {
-    public class FileGreenhouseRepository : IGreenhouseRepository
+    private List<float> _historialLecturas = new();
+    private List<string> _historialRiegos = new();
+    private List<IrrigationEvent> _historialEventos = new();
+
+    private string _readingsPath = Path.Combine(AppContext.BaseDirectory, "readings.json");
+    private string _eventsPath = Path.Combine(AppContext.BaseDirectory, "irrigation_events.json");
+
+    public void GuardarLecturaHumedad(float valor)
     {
-        public string RutaArchivo { get; set; }
-        public string Formato { get; set; }
+        _historialLecturas.Add(valor);
+        string json = JsonSerializer.Serialize(_historialLecturas, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText(_readingsPath, json);
+    }
 
-        public FileGreenhouseRepository(string rutaArchivo, string formato)
+    public void RegistrarEvento(IrrigationEvent evento)
+    {
+        _historialEventos.Add(evento);
+        _historialRiegos.Add($"{evento.Timestamp:O}|{evento.Causa}|{evento.DuracionSeg}");
+
+        string json = JsonSerializer.Serialize(_historialEventos, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText(_eventsPath, json);
+    }
+
+    public List<IrrigationEvent> ObtenerHistorial()
+    {
+        if (!File.Exists(_eventsPath))
         {
-            this.RutaArchivo = rutaArchivo;
-            this.Formato = formato;
+            return new List<IrrigationEvent>();
         }
 
-        public void guardarLecturaHumedad(float valor)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void registrarEvento(IrrigationEvent evento)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<IrrigationEvent> obtenerHistorial()
-        {
-            throw new NotImplementedException();
-        }
+        string json = File.ReadAllText(_eventsPath);
+        List<IrrigationEvent>? eventos = JsonSerializer.Deserialize<List<IrrigationEvent>>(json);
+        return eventos ?? new List<IrrigationEvent>();
     }
 }

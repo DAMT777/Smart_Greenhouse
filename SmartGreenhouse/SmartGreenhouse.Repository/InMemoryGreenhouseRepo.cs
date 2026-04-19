@@ -2,26 +2,29 @@ using System.Collections.Generic;
 using SmartGreenhouse.Domain.Entities;
 using SmartGreenhouse.Domain.Interfaces;
 
-namespace SmartGreenhouse.Repository
+namespace SmartGreenhouse.Repository;
+
+public class InMemoryGreenhouseRepo : IGreenhouseRepository
 {
-    public class InMemoryGreenhouseRepo : IGreenhouseRepository
+    private List<float> _historialLecturas = new();
+    private List<string> _historialRiegos = new();
+    private List<IrrigationEvent> _historialEventos = new();
+
+    public void GuardarLecturaHumedad(float valor)
     {
-        private List<float> _historialLecturas = new List<float>();
-        private List<IrrigationEvent> _historialEventos = new List<IrrigationEvent>();
+        _historialLecturas.Add(valor);
+        Console.WriteLine($"Lectura guardada en memoria: {valor:F2}%");
+    }
 
-        public void guardarLecturaHumedad(float valor)
-        {
-            _historialLecturas.Add(valor);
-        }
+    public void RegistrarEvento(IrrigationEvent evento)
+    {
+        _historialEventos.Add(evento);
+        _historialRiegos.Add($"{evento.Timestamp}: {evento.Causa} - {evento.DuracionSeg}s");
+        Console.WriteLine($"Evento registrado en memoria: {evento.Causa} ({evento.DuracionSeg}s)");
+    }
 
-        public void registrarEvento(IrrigationEvent evento)
-        {
-            _historialEventos.Add(evento);
-        }
-
-        public List<IrrigationEvent> obtenerHistorial()
-        {
-            return _historialEventos;
-        }
+    public List<IrrigationEvent> ObtenerHistorial()
+    {
+        return _historialEventos;
     }
 }
