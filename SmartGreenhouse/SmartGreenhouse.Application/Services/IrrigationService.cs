@@ -3,58 +3,66 @@ using SmartGreenhouse.Domain.Entities;
 using SmartGreenhouse.Domain.Interfaces;
 using SmartGreenhouse.Domain.Rules;
 
-namespace SmartGreenhouse.Application.Services
+namespace SmartGreenhouse.Application.Services;
+
+public class IrrigationService
 {
-    public class IrrigationService
+    private IGreenhouseRepository _repositorio;
+    private IActuadorRiego _actuador;
+    private ReglaRiego _regla;
+
+    public IrrigationService(IGreenhouseRepository repositorio, IActuadorRiego actuador, ReglaRiego regla)
     {
-        private IGreenhouseRepository _repositorio;
-        private IActuadorRiego _actuador;
-        private ReglaRiego _regla;
+        _repositorio = repositorio;
+        _actuador = actuador;
+        _regla = regla;
+    }
 
-        public IrrigationService(IGreenhouseRepository repositorio, IActuadorRiego actuador, ReglaRiego regla)
+    public void EvaluarYEjecutar(ClimateState state)
+    {
+        _repositorio.GuardarLecturaHumedad(state.Humedad);
+
+        if (_regla.RequiereRiego(state.Humedad))
         {
-            _repositorio = repositorio;
-            _actuador = actuador;
-            _regla = regla;
-        }
+            int duracion = _regla.GetDuracionRiego();
+            _actuador.ActivarPor(duracion);
 
-        public void evaluarYEjecutar(ClimateState state)
-        {
-            _repositorio.guardarLecturaHumedad(state.Humedad);
-
-            if (_regla.requiereRiego(state.Humedad))
+            var evento = new IrrigationEvent
             {
-                int duracion = _regla.getDuracionRiego();
-                _actuador.activarPor(duracion);
+                DuracionSeg = duracion,
+                Causa = "AUTO",
+                Timestamp = DateTime.Now,
+                HumedadAntes = state.Humedad,
+                HumedadDespues = state.Humedad + 10f
+            };
 
-                var evento = new IrrigationEvent(
-                    duracion,
-                    "automatico",
-                    DateTime.Now,
-                    state.Humedad,
-                    0f
-                );
-                _repositorio.registrarEvento(evento);
-            }
+            _repositorio.RegistrarEvento(evento);
         }
+    }
 
-        public void forzarRiegoManual(int segundos)
+    public void ForzarRiegoManual(int segundos)
+    {
+        _actuador.ActivarPor(segundos);
+
+        var evento = new IrrigationEvent
         {
-            _actuador.activarPor(segundos);
+            DuracionSeg = segundos,
+            Causa = "MANUAL",
+            Timestamp = DateTime.Now,
+            HumedadAntes = 0f,
+            HumedadDespues = 0f
+        };
 
-            var evento = new IrrigationEvent(
-                segundos,
-                "manual",
-                DateTime.Now,
-                0f,
-                0f
-            );
-            _repositorio.registrarEvento(evento);
-        }
+        _repositorio.RegistrarEvento(evento);
+    }
 
-        public void detenerRiego()
-        {
-            _actuador.desactivar();
-        }
+    public void DetenerRiego()
+    {
+        _actuador.Desactivar();
+    }
+
+    public void ActualizarUmbralRiego(float nuevoUmbral)
+    {
+        _regla.ActualizarUmbral(nuevoUmbral);
     }
 }

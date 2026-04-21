@@ -1,47 +1,45 @@
 using SmartGreenhouse.Domain.Entities;
+using SmartGreenhouse.Domain.Interfaces;
 
-namespace SmartGreenhouse.Application.Services
+namespace SmartGreenhouse.Application.Services;
+
+public class VentilationService
 {
-    public class VentilationService
+    private IActuadorVentilacion _ventilador;
+    private float _umbralTemp;
+
+    public VentilationService(IActuadorVentilacion ventilador, float umbralTemp)
     {
-        private Ventilador _ventilador;
-        private float _umbralTemp;
+        _ventilador = ventilador;
+        _umbralTemp = umbralTemp;
+    }
 
-        public VentilationService(Ventilador ventilador, float umbralTemp)
+    public void EvaluarTemperatura(ClimateState state)
+    {
+        if (state.Temperatura > _umbralTemp)
         {
-            _ventilador = ventilador;
-            _umbralTemp = umbralTemp;
+            _ventilador.SetVelocidad(3);
         }
-
-        public void actualizarUmbralTemp(float valor)
+        else
         {
-            _umbralTemp = valor;
-        }
-
-        public void evaluarTemperatura(ClimateState state)
-        {
-            if (state.Temperatura > _umbralTemp)
-            {
-                _ventilador.encender();
-                _ventilador.setVelocidad(100);
-            }
-            else
-            {
-                _ventilador.apagar();
-                _ventilador.setVelocidad(0);
-            }
-        }
-
-        public void forzarVentilacion(int nivel)
-        {
-            _ventilador.encender();
-            _ventilador.setVelocidad(nivel);
-        }
-
-        public void detenerVentilacion()
-        {
-            _ventilador.apagar();
-            _ventilador.setVelocidad(0);
+            _ventilador.Detener();
         }
     }
+
+    public void ForzarVentilacion(int nivel)
+    {
+        _ventilador.SetVelocidad(nivel);
+    }
+
+    public void DetenerVentilacion()
+    {
+        _ventilador.Detener();
+    }
+
+    public void ActualizarUmbralTemp(float valor)
+    {
+        _umbralTemp = valor;
+    }
+
+    public float UmbralTemp { get; private set; }
 }
